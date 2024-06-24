@@ -3,16 +3,35 @@ let filterBelem = document.querySelector('#B');
 let filterCelem = document.querySelector('#C');
 
 let filtersContainer = document.querySelector('.filter-container');
-fetch("tableData.json")
-.then(function(response){
-    return response.json();
-})
-.then(function(data){
 
+//Initially i used the fetch API to get the data from my local json file,
+//but in order to avoid CORS issues and setting up a local server, I decided to include the data directly into the JS file
+
+// fetch("tableData.json")
+// .then(function(response){
+//     return response.json();
+// })
+// .then(function(data){
+//     populateTable(data);
+//     filterJson(data);
+// })
+
+const data = [
+    { "A": "A1", "B": "B1", "C": "C1" },
+    { "A": "A1", "B": "B1", "C": "C2" },
+    { "A": "A1", "B": "B1", "C": "C3" },
+    { "A": "A1", "B": "B2", "C": "C4" },
+    { "A": "A1", "B": "B2", "C": "C5" },
+    { "A": "A1", "B": "B3", "C": "C6" },
+    { "A": "A2", "B": "B4", "C": "C7" },
+    { "A": "A2", "B": "B5", "C": "C8" },
+    { "A": "A2", "B": "B5", "C": "C9" },
+    { "A": "A3", "B": "B6", "C": "C10"}
+]
+function initiatePage (data){
     populateTable(data);
     filterJson(data);
-})
-
+}
 function filterJson(data)
 {
     let filteredData = data;
@@ -82,3 +101,4 @@ function populateTable(data) {
     populateFilters(filterObject);
 }
 
+initiatePage(data);
